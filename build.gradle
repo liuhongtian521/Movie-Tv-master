@@ -1,0 +1,48 @@
+// Top-level build file where you can add configuration options common to all sub-projects/modules.
+
+buildscript {
+    repositories {
+        google()
+        jcenter()
+        maven { url "https://maven.aliyun.com/repository/google"}
+        maven { url "https://maven.aliyun.com/repository/public" }
+        maven { url "https://maven.aliyun.com/repository/jcenter" }
+        maven { url "https://maven.aliyun.com/repository/gradle-plugin" }
+        maven { // 必须添加这个
+            url "${rootProject.projectDir.getAbsolutePath()}/tencent-sdk"
+            name "Tencent SDK"
+        }
+
+        maven { // 如果没有翻墙条件, 就用这个
+            url 'https://maven.aliyun.com/repository/public'
+            name 'aliyun-public'
+        }
+        maven { // 如果没有翻墙条件, 就用这个
+            url 'https://maven.aliyun.com/repository/google'
+            name 'aliyun-google'
+        }
+        // 一个通用的 可以嵌套任何view的圆角布局
+        maven { url "http://lib.gcssloop.com:8081/repository/gcssloop-central/" }
+    }
+
+    dependencies {
+        classpath 'com.android.tools.build:gradle:4.2.2'
+        classpath 'com.google.dagger:hilt-android-gradle-plugin:2.32'
+
+        // NOTE: Do not place your application dependencies here; they belong
+        // in the individual module build.gradle files
+    }
+}
+
+allprojects {
+    repositories {
+        google()
+        jcenter()
+        maven { url 'https://jitpack.io' }
+
+    }
+}
+
+task clean(type: Delete) {
+    delete rootProject.buildDir
+}
